@@ -1,120 +1,92 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial;
   background-color: black;
+  color: white;
 }
 
 header {
-  padding: 50px;
+  grid-area: header;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   background: #212121;
+  padding: 2%;
   color: white;
-  width: 100%;
   border-radius: 10px;
 }
 
-
-header>img {
-  width: 10%;
-  float: left;
-}
-
-header > p{
-  margin-left: 15%;
-}
-
-.row {
-  display: flex;
-  margin: 1px;
-  flex-wrap: wrap;
-}
-
 nav {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  flex: 25%;
- background-color: black;
+  grid-area: nav;
+  margin-top: 20px;
+  background-color: black;
 }
 
 nav li {
   list-style: none;
-  line-height: 80px;
+  width: 60%;
+  margin: auto;
+  color: #212121;
+  text-align: center;
+  border-radius: 100px;
+  line-height: 60px;
+}
 
+nav li:hover {
+  background-color: #212121;
 }
 
 nav a {
   text-decoration: none;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  size: 1;
 }
-
-nav a:hover {
-  color: green;
-}
-
 
 section {
-  flex: 50%;
-  padding: 20px;
-  background-color: #313131;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 2px;
-}
-
-#mainCal {
-  background-color: #757575;
-  margin: auto;
-  color: white;
-  border-radius: 20px;
-  width: 60%;
-  height: 500px;
-  padding: 10px;
-
-}
-
-aside {
-  flex: 25%;
-  height: auto;
-  background-color: black;
-  color: white;
-}
-
-footer {
-  padding: 20px;
-  text-align: center;
-  background: #212121;
-  color: white;
-  border-radius: 10px;
+  grid-area: section;
+  background-color: teal;
+  padding: 2%;
 }
 
 .box {
-  grid-area: content;
-  width: 480px;
-  height: auto;
-  margin: auto;
+  display: grid;
+  width: 65%;
+  height: 100%;
   background-color: #212121;
   border-radius: 20px;
-  padding: 20px;
+  margin: auto;
+}
+
+.printValue {
+  padding: 10px;
+  background-color: black;
+  width: 90%;
+  height: 70%;
+  font-size: 2em;
+  color: white;
+  border-radius: 20px;
+  text-align: right;
+  border: 1px solid #eeeeee;
+  margin-top: 6%;
+  margin-left: 5%;
 }
 
 .keys {
-  position: relative;
-  top: 15px;
+  margin-top: 7%;
+  margin-left: 10%;
 }
 
 .button {
-  font-size: 35px;
+  font-size: 2.5em;
   border: none;
-  width: 88px;
-  height: 58px;
-  margin-left: 18px;
+  width: 17%;
+  height: 40%;
+  margin-bottom: 0.5em;
+  margin-left: 4%;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -130,28 +102,107 @@ footer {
 }
 
 .button.Equal {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-size: 2em;
   color: white;
   border-top: 1px eeeeee solid;
   background-color: lightslategray;
-  width: 415px;
-  padding: 9px;
+  width: 80%;
+  height: 70%;
 }
 
-
-.printValue {
-  padding: 10px;
+aside {
+  grid-area: aside;
   background-color: black;
   color: white;
-  border-radius: 20px;
-  text-align: right;
-  border: 1px solid #eeeeee;
-  width: 444px;
-  height: 60px;
-  font-size: 40px;
+}
+
+footer {
+  grid-area: footer;
+  padding: 20px;
+  text-align: center;
+  background: #212121;
+  color: white;
+  border-radius: 10px;
+}
+
+/* Show section before nav on mobile */
+.grid {
+  display: grid;
+  grid-template-areas: "header"
+    "nav"
+    "section"
+    "aside"
+    "footer";
+}
+
+.IMGContainer img {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: img;
+}
+
+.IMGContainer p {
+  margin-top: 5%;
+  margin-right: 6%;
+  grid-area: pp;
+}
+
+.IMGContainer {
+  display: grid;
+  grid-template-areas:
+    "img"
+    "pp";
 }
 
 aside>div {
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.3em;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Apply the following styles to screens > 720px */
+
+@media only screen and (min-width: 720px) {
+
+  .grid {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-areas: "header header header"
+      "nav section section"
+      "aside aside aside"
+      "footer footer footer";
+  }
+
+  .IMGContainer {
+    display: grid;
+    grid-template-areas: "img pp"
+      "img pp";
+  }
+}
+
+/* Apply the following styles to screens > 1024px */
+@media only screen and (min-width: 1024px) {
+
+  .grid {
+    display: grid;
+    grid-template-areas: "header header header"
+      "nav section aside"
+      "nav section aside"
+      "footer footer footer";
+  }
+
+  .IMGContainer {
+    display: grid;
+    grid-template-areas: "img img"
+      "img pp";
+  }
 }
